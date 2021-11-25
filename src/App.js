@@ -1,23 +1,19 @@
-import logo from './logo.svg';
+import  {useState} from 'react';
+import Card from './components/Card';
 import './App.css';
+import { Switch } from '@mui/material';
 
 function App() {
+  const [isOnline, setIsOnline]= useState(false)
+  // const handleClick= () => {
+  //  console.log("CLicked");
+  // }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    {/*<Button variant="outlined" onClick={handleClick}>Outlined</Button>*/}
+<Card title="Online mode" body="Is this application connected to the internet"state={isOnline} setState={setIsOnline} component={Switch}/>
+<Card title="Master mode" body="Over Rides all other sound settings in this application" state={setIsOnline} component />
+{!isOnline && <p>Is currently offline</p>}
     </div>
   );
 }
